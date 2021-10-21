@@ -12,10 +12,10 @@ Enable translations
 Setup > Translation workbench > Add spanish as supported lang
 
 Setup > Translation workbench > Translate : 
-Lang: spanish
-Setup component: Custom field
-Object: Activity
-Aspect: Field label
+ * Lang: spanish
+ * Setup component: Custom field
+ * Object: Activity
+ * Aspect: Field label
 
 Click on "Field label translation" and add a translation, then Save.
 

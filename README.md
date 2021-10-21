@@ -1,18 +1,28 @@
-# Salesforce DX Project: Next Steps
+### Create scratch org
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+`sfdx force:org:create -f config/project-scratch-def.json -s -a issue-1233 -v $DEVHUBUSERNAME --durationdays=1`
 
-## How Do You Plan to Deploy Your Changes?
+### Deploy project
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+`sfdx force:source:deploy -x package.xml`
 
-## Configure Your Salesforce DX Project
+### Add custom field translation
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
+Enable translations
+Setup > Translation workbench > Add spanish as supported lang
 
-## Read All About It
+Setup > Translation workbench > Translate : 
+Lang: spanish
+Setup component: Custom field
+Object: Activity
+Aspect: Field label
 
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+Click on "Field label translation" and add a translation, then Save.
+
+### Retrieve translation
+
+```
+sfdx force:source:retrieve --metadata=CustomObjectTranslation:Activity-es
+
+ERROR running force:source:retrieve:  Metadata API request failed: Component conversion failed: Unexpected child metadata [/Users/cdominguez/code/gh/forcedotcom-cli-issue-1233/force-app/main/default/objectTranslations/Activity-es/CallDate__c.fieldTranslation-meta.xml] found for parent type [CustomObjectTranslation]
+```
